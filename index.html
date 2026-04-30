@@ -18,7 +18,8 @@
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     </head>
     <body>
-        <div class="wrapper">
+        <!-- thêm cả overflow: hidden; ở body-->
+        <!-- <div class="wrapper"> -->
             <!-- HEADER -->
             <header class="header">
                 <div class="container">
@@ -217,6 +218,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>cssClass</td>
+                        <td>array</td>
+                        <td>
+                            Custom CSS classes applied to the modal container
+                            (default: <code>[]</code>)
+                        </td>
+                    </tr>
+                    <tr>
                         <td>footer</td>
                         <td>boolean</td>
                         <td>
@@ -241,6 +250,27 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>enableScrollLock</td>
+                        <td>boolean</td>
+                        <td>
+                            Enables or disables scroll locking when the modal is
+                            open. When set to
+                            <code>true</code>, it prevents scrolling on the
+                            target element specified by
+                            <code>scrollLockTarget</code>. Default:
+                            <code>true</code>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>scrollLockTarget</td>
+                        <td>function</td>
+                        <td>
+                            A callback that returns the element to apply scroll
+                            locking on. By default, it locks scrolling on
+                            <code>document.body</code>.
+                        </td>
+                    </tr>
+                    <tr>
                         <td>onOpen</td>
                         <td>function</td>
                         <td>
@@ -255,14 +285,6 @@
                         <td>
                             Callback function executed when the modal closes
                             (default: <code>undefined</code>)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>cssClass</td>
-                        <td>array</td>
-                        <td>
-                            Custom CSS classes applied to the modal container
-                            (default: <code>[]</code>)
                         </td>
                     </tr>
                 </table>
@@ -407,7 +429,7 @@
                 </footer>
             </div>
             <!-- /CONTAINER -->
-        </div>
+        <!-- </div> -->
 
         <template id="modal-1">
             <h1>Template Modal 1</h1>
@@ -428,9 +450,7 @@
                     <h1>Content Modal 1</h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio, unde. Voluptatum vitae deserunt fugit tempore ut quo numquam, consequatur cupiditate!</p>
                     `,
-                scrollLockTarget: () => {
-                    return document.querySelector(".wrapper");
-                },
+                // scrollLockTarget: () => document.querySelector(".wrapper"),
             });
 
             modal1Btn.onclick = () => {
