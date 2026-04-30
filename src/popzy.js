@@ -146,8 +146,8 @@ Popzy.prototype.open = function () {
         this._backdrop.classList.add("popzy--show");
     }, 0);
 
-    // Disable scrolling
-    if (this.opt.enableScrollLock) {
+    // Disable scrolling: chỉ áp cho 1 modal đầu tiên - fix multi modal padding right
+    if (Popzy.elements.length === 1 && this.opt.enableScrollLock) {
         const target = this.opt.scrollLockTarget();
 
         if (this._hasScrollbar(target)) {
